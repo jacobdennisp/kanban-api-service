@@ -23,7 +23,7 @@ class TaskController extends Controller
 
     public function store(StoreTaskRequest $request):JsonResponse
     {
-        $task=Task::Create($request->validates());
+        $task=Task::Create($request->validated());
         SendTaskNotification::dispatch($task,'created');
         return reponse()->json([
             'success'=>true,
