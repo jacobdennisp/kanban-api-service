@@ -25,8 +25,8 @@ return new class extends Migration
             $table->index('status');
             $table->index('priority');
             $table->index('due_date');
-            $table->index('create_at');
-            $table->index(['status','priroity']);
+            $table->index('created_at');
+            $table->index(['status','priority']);
 
         });
     }
