@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'notification'=>[
+        'url'=>env('NOTIFICATION_SERVICE_URL','http://localhost:8000'),
+        'timeout'=>env('NOTIFICATION_SERVICE_TIMEOUT',30),
+        'retry_times'=>env('NOTIFICATION_SERVICE_RETRY_TIMES',3)
+    ]
 ];
