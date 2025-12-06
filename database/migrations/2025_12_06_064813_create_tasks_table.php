@@ -23,7 +23,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index('status');
-            $table->index('pirority');
+            $table->index('priority');
             $table->index('due_date');
             $table->index('create_at');
             $table->index(['status','priroity']);
