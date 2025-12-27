@@ -13,7 +13,7 @@ class UpdateTaskStatusRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,7 +32,7 @@ class UpdateTaskStatusRequest extends FormRequest
     {
         return [
             'status.required'=>'The task status is required.',
-            'status.in'=>'The selected status is invalid. Valid values are todo,in_progress,done.',
+            'status.in'=>'The selected status is invalid. Valid values are todo,wip,done.',
         ];
     }
 }

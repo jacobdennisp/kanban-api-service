@@ -107,7 +107,7 @@ class TaskController extends Controller
      * Remove the specified task
      * DELETE /api/tasks/{task}
      */
-    public function destroy(Task $task): JsonResponse
+    public function delete(Task $task): JsonResponse
     {
         // Send notification before deleting
         $this->amqpService->sendTaskNotification($task, 'deleted');
@@ -129,10 +129,10 @@ class TaskController extends Controller
         $stats = [
             'total' => Task::count(),
             'todo' => Task::status(Task::STATUS_TODO)->count(),
-            'in_progress' => Task::status(Task::STATUS_IN_PROGRESS)->count(),
+            'wip' => Task::status(Task::STATUS_INPROGRESS)->count(),
             'done' => Task::status(Task::STATUS_DONE)->count(),
             'completed' => Task::completed()->count(),
-            'incomplete' => Task::incompleted()->count(),
+           // 'incomplete' => Task::inCompleted()->count(),
             'overdue' => Task::overdue()->count(),
             'high_priority' => Task::priority(Task::PRIORITY_HIGH)->count(),
             'medium_priority' => Task::priority(Task::PRIORITY_MEDIUM)->count(),

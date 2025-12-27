@@ -39,7 +39,7 @@ class StoreTaskRequest extends FormRequest
             'title.max'=>'The title must not exceed 255 characters',
             'description.max'=>'The task description must not exceed 1000 characters',
             'status.required'=>'The task status is required.',
-            'status.in'=>'The selected status is invalid. Valid values are todo,in_progress,done.',
+            'status.in'=>'The selected status is invalid. Valid values are todo,wip,done.',
             'priority.required'=>'The task priority is required.',
             'priority.in'=>'The selected p riority is invalid. Valid ones are low, medium,high.',
             'due_date.date'=>'The due date must be a valid date.',

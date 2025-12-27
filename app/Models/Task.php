@@ -30,7 +30,7 @@ class Task extends Model
 
     //Status Contants
     const STATUS_TODO='todo';
-    const STATUS_IN_PROGRESS='in_progress';
+    const STATUS_INPROGRESS='wip';
     const STATUS_DONE='done';
 
     //Priority constants
@@ -42,7 +42,7 @@ class Task extends Model
     {
         return [
             self::STATUS_TODO,
-            self::STATUS_IN_PROGRESS,
+            self::STATUS_INPROGRESS,
             self::STATUS_DONE
         ];
     }
@@ -73,6 +73,8 @@ class Task extends Model
         return $query->where('status',self::STATUS_DONE);
     }
 
+    
+
     public function scopeInComplete($query){
         return $query->where('status','!=',self::STATUS_DONE);
     }
@@ -90,6 +92,9 @@ class Task extends Model
         return $this->status === self::STATUS_DONE;
     }
 
+    public function inCompleted(){
+       return $this->status !== self::STATUS_DONE;
+    }
     public function markAsCompleted():bool
     {
         $this->status = self::STATUS_DONE;
@@ -108,7 +113,7 @@ class Task extends Model
     {
         static::updating(function($task){
             if($task->isDirty('status')){
-                if($this->status === self::STATUS_DONE && !$task->completed_at){
+                if($task->status === self::STATUS_DONE && !$task->completed_at){
                     $task->completed_at = now();
                 }elseif($task->status !== self::STATUS_DONE){
                     $task->completed_at = null;
