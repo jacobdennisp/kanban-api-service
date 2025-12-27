@@ -61,7 +61,11 @@ class AmqpNotificationService
                 false,  // passive
                 true,   // durable
                 false,  // exclusive
-                false   // auto_delete
+                false,   // auto_delete
+                false, // nowait
+                [
+                    'x-message-ttl'=>['I',86400000]
+                ]
             );
 
             // Bind queue to exchange
@@ -95,6 +99,7 @@ class AmqpNotificationService
                 'timestamp' => now()->toIso8601String(),
             ];
 
+            
             // Convert to JSON
             $messageBody = json_encode($notification);
 

@@ -37,6 +37,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request): JsonResponse
     {
+        //dd(111111);
         $task = Task::create($request->validated());
         
         // Send notification to RabbitMQ
