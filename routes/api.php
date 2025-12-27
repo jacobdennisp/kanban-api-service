@@ -31,6 +31,7 @@ Route::prefix('tasks')->group(function(){
     Route::get('overdue',[TaskController::class,'overdue'])->name('tasks.overdue');
     Route::get('status/{status}',[TaskController::class,'byStatus'])->name('tasks.by-status');
     Route::get('priority/{priority}',[TaskController::class,'byPriority'])->name('tasks.by-priority');
+ 
     Route::put('{task}/status',[TaskController::class,'updateStatus'])->name('tasks.update-status');
     Route::get('/',[TaskController::class,'index'])->name('tasks.index');
     Route::post('/',[TaskController::class,'store'])->name('tasks.store');

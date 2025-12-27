@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87244aa4ed93a7f86d47816210b276b9",
+    "content-hash": "529afae7ed13f5d8552cd051c67d2d13",
     "packages": [
         {
             "name": "brick/math",
@@ -3468,6 +3468,60 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "sai97/laravel-amqp",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Z-Sai/laravel-amqp.git",
+                "reference": "329bc67115b9257305c485d805877d40c3245c71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Z-Sai/laravel-amqp/zipball/329bc67115b9257305c485d805877d40c3245c71",
+                "reference": "329bc67115b9257305c485d805877d40c3245c71",
+                "shasum": ""
+            },
+            "require": {
+                "php-amqplib/php-amqplib": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sai97\\LaravelAmqp\\AmqpQueueProviders"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sai97\\LaravelAmqp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sai97"
+                }
+            ],
+            "description": "基于php-amqplib/php-amqplib组件适配laravel框架的amqp封装库",
+            "keywords": [
+                "AMQP",
+                "laravel",
+                "laravel amqp",
+                "laravel-amqp",
+                "queue",
+                "rabbitmq"
+            ],
+            "support": {
+                "issues": "https://github.com/Z-Sai/laravel-amqp/issues",
+                "source": "https://github.com/Z-Sai/laravel-amqp/tree/v2.0.3"
+            },
+            "time": "2023-12-15T06:35:29+00:00"
         },
         {
             "name": "symfony/console",

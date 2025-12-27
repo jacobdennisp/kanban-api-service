@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Model\Task;
+use App\Models\Task;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +24,41 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=>['required','string','max:255'],
+            'description'=>['nullable','string','max:1000'],
+            'status'=>['sometimes',Rule::in(Task::getStatuses())],
+            'priority'=>['required',Rule::in(Task::getPriorities())],
+            'due_date'=>['nullable','date','after_or_equal:today']
         ];
+    }
+
+    public function messages():array
+    {
+        return [
+            'title.required'=>'The task title is required',
+            'title.max'=>'The title must not exceed 255 characters',
+            'description.max'=>'The task description must not exceed 1000 characters',
+            'status.required'=>'The task status is required.',
+            'status.in'=>'The selected status is invalid. Valid values are todo,in_progress,done.',
+            'priority.required'=>'The task priority is required.',
+            'priority.in'=>'The selected p riority is invalid. Valid ones are low, medium,high.',
+            'due_date.date'=>'The due date must be a valid date.',
+            'due_date.after_or_equal'=>'The due date must be today or a future date'
+        ];
+    }
+
+    protected function prepareForValidation():void
+    {
+        if(!$this->has('status')){
+            $this->merge([
+                'status' => Task::STATUS_TODO
+            ]);
+        }
+
+        if(!$this->has('priority')){
+            $this->merge([
+                'priority' => Task::PRIORITY_MEDIUM
+            ]);
+        }
     }
 }
